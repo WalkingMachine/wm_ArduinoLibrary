@@ -19,5 +19,5 @@ Obviously, all bytes where sent in different frames.
 | 6       |DATA 4      |Data byte number 4         |
 | 7       |MSG CHECKSUM|Data Checksum              |
 
-Thank to this protocol we can send up to 4 bytes in one message of 8 bytes, with a 2 byte ID and a checksum control.
+Thank to this protocol we can send up to 5 bytes in one message of 8 bytes, with a 2 byte ID and a checksum control.
 The checksum is the sum of byte with a high value in both ID and DATA bytes.
