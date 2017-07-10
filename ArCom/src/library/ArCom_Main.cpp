@@ -4,9 +4,9 @@
 
 #include "ArCom_Main.h"
 
-char calculateChecksum(T_Message theMessage){
+unsigned char calculateChecksum(T_Message theMessage){
 	//initialise sum to zero
-	char cCalculatedChecksum = 0;
+	unsigned char cCalculatedChecksum = 0;
 
 	//calculate received data checksum by adding
 	for(int iLoop = 0; iLoop < CHECKSUM_POSITION; iLoop++){
@@ -32,13 +32,13 @@ long getInteger(T_Message theMessage){
 
 void generateMessageInteger(int ID, long data, T_Message theMessage){
 	//write ID
-	for(index = 0; index < 2; index ++){
-		theMessage[ID_POSITION + index] = (data >> (index * BYTE)) & 0x000F;
+	for(int index = 0; index < 2; index ++){
+		theMessage[ID_POSITION + index] = (ID >> (index * 8)) & 0xFF;
 	}
 
 	//write data
-	for(index = 0; index < 4; index ++){
-		theMessage[DATA_POSITION + index] = (data >> (index * BYTE)) & 0x000F;
+	for(int index = 0; index < 4; index ++){
+		theMessage[DATA_POSITION + index] = (data >> (index * 8)) & 0xFF;
 	}
 
 	//calculate and write checksum

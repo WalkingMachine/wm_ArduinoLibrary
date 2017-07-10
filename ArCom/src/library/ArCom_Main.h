@@ -10,15 +10,13 @@
 #define DATA_POSITION       2   //Index of the first DATA byte
 #define CHECKSUM_POSITION   7   //Index of the checksum byte
 
-#define BYTE 0xF
-
-typedef char  T_Message[MESSAGE_SIZE];
+typedef unsigned char  T_Message[MESSAGE_SIZE];
 
 /**
  * @param theMessage an RS232 message of ArCom form
  * @return the checksum
  */
-char calculateChecksum(T_Message theMessage);
+unsigned char calculateChecksum(T_Message theMessage);
 
 /**
  * @param theMessage an RS232 message of ArCom form
@@ -44,3 +42,5 @@ long getInteger(T_Message theMessage);
  * @return generated message for serial sent
  */
 void generateMessageInteger(int ID, long data, T_Message theMessage);
+
+#endif
